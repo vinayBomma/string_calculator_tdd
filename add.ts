@@ -3,10 +3,17 @@ export function add(numbers: string): number {
     return 0;
   }
 
-  const delimiter = /,|\n/;
+  let delimiter = /,|\n/;
+  if (numbers.startsWith("//")) {
+    const delimiterMatch = numbers.match(/^\/\/(.+)\n/);
+    if (delimiterMatch) {
+      delimiter = new RegExp(delimiterMatch[1]);
+      numbers = numbers.slice(delimiterMatch[0].length);
+    }
+  }
   const numberArray = numbers.split(delimiter).map(Number);
 
   return numberArray.reduce((sum, num) => sum + (num || 0), 0);
 }
 
-console.log(add("1\n2,3"));
+console.log(add("//;\n1;2"));
