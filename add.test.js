@@ -17,4 +17,10 @@ describe("add function", () => {
     test("supports custom delimiters", () => {
         expect((0, add_1.add)("//;\n1;2")).toBe(3);
     });
+    test("throws an exception for negative numbers", () => {
+        expect(() => (0, add_1.add)("1,-2,3")).toThrow("negative numbers not allowed: -2");
+    });
+    test("throws an exception listing all negative numbers", () => {
+        expect(() => (0, add_1.add)("1,-2,-3,4")).toThrow("negative numbers not allowed: -2, -3");
+    });
 });
