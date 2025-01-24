@@ -3,10 +3,10 @@ export function add(numbers: string): number {
     return 0;
   }
 
-  return numbers
-    .split(",")
-    .map(Number)
-    .reduce((a, b) => a + b, 0);
+  const delimiter = /,|\n/;
+  const numberArray = numbers.split(delimiter).map(Number);
+
+  return numberArray.reduce((sum, num) => sum + (num || 0), 0);
 }
 
-console.log(add("1, -3"));
+console.log(add("1\n2,3"));
