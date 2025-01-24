@@ -5,7 +5,7 @@
   "main": "add.js",
   "scripts": {
     "test": "jest",
-    "start": "node add.js"
+    "start": "tsc && node add.js"
   },
   "author": "",
   "license": "ISC",
